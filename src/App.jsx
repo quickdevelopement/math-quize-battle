@@ -6,6 +6,48 @@ import generateQuestion from './utils/generateQuestion'
 
 function App() {
   const [question, setQuestion] = useState(()=>generateQuestion(1));
+  const [level, setLevel]=useState(1);
+  const [score, setScore]= useState(0);
+  const [streak, setStreak] = useState(0);
+  const [running, setRunning]= useState(false);
+  const [message, setMessage]=useState("");
+
+  const startGame = () => {
+    setRunning(true);
+    setScore(0);
+    setStreak(0);
+    setLevel(1);
+    setMessage("");
+    setQuestion(generateQuestion(level));
+    // tiemmer
+    // sound
+  }
+
+  const stopGame = () => {
+    setRunning(false);
+    setMessage("Game Stop");
+  };
+
+
+  const handlePuse = () =>{
+    setRunning(!running);
+    setMessage(running ? "Game Paused" : "Game Resumed");
+    setScore(s=>s);
+    setStreak(s=>s);
+    setLevel(l=>l);
+    setQuestion(q=>q);
+    // tiemmer
+  };
+
+  const handleReset = () => {
+    setScore(0);
+    setStreak(0);
+    setLevel(1);
+    setRunning(false);
+    setMessage("Reset Store");
+  }
+
+
 
   return (
     <>
@@ -17,7 +59,30 @@ function App() {
 
         <main className='grid grid-cols-1 md:grid-cols-3 gap-4'>
           <section className='md:col-span-2 bg-white dark:bg-black p-4 rounded-lg shadow-lg'>
+            <div className="flex justify-between items-start mb-3">
+              <div>
+                <div className="text-2xl text-yellow-700 font-bold dark:text-yellow-400">Level <span>{level}</span></div>
+                <div className="text-md font-medium text-green-500 dark:text-blue-200">Streak: {streak} Score: {score}</div>
+              </div>
+              {/* Game Crontroller Button  */}
+              <div className="space-x-2">
+                {
+                  !running && score === 0 ? (
+                    <button onClick={startGame} className='px-3 py-1 bg-blue-600 text-white rounded'>Start</button>
+                  ):(
+                    <button onClick={stopGame} className='px-3 py-1 bg-red-600 text-white rounded'>Stop</button>
+                  
+                  )               
+                }
 
+                {
+                  score > 0 && (
+                    <button onClick={handlePuse} className='px-3 py-1 bg-green-600 text-white rounded'>Puse</button>
+                  )
+                }
+                <button onClick={handleReset} className='px-3 py-1 bg-yellow-600 text-white rounded'>Reset</button>
+              </div>
+            </div>
 
             {/* Questions  */}
             <div className="mb-4 p-4 bg-green-100 dark:bg-green-200 border rounded">
