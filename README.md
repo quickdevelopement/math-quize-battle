@@ -2,7 +2,7 @@
 
 ***Game Project***
 
-### Techknologis
+### Techknowlogies
 - [x] React
 - [x] Tailwind
 
