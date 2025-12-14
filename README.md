@@ -7,8 +7,8 @@
 - [x] Tailwind
 
 ### Working Process
-01. Question Generate + Shaffled
-02. Show Question
+01. <p style="color:green">Question Generate + Shaffled</p>
+02. <p style="color:green">Show Question</p>
 03. Game Crontroller Button
 04. Result (Score + Level + Streak)
 05. Handle Timer + Timer Bar
