@@ -3,6 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import generateQuestion from './utils/generateQuestion'
+import ThemeMode from './components/ThemeMode'
 
 const STORAGE_KEY = "math_quize_battle_leaderboard";
 
@@ -166,8 +167,9 @@ function App() {
     <>
       <div className="min-h-screen bg-blue-100 lg:pt-4 dark:bg-blue-900 dark:text-blue-100">
         <div className="max-w-6xl mx-auto">
-          <header>
+          <header className='flex justify-between mb-5'>
             <h1 className="text-3xl font-bold text-center mb-8">Math Quiz Battle</h1>
+            <ThemeMode/>
           </header>
 
           <main className='grid grid-cols-1 md:grid-cols-3 gap-4'>
